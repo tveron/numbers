@@ -14,39 +14,40 @@
 				console.log(arr);
 		}
 		function compare(){
-			const qsort = (arr) => {
-				if (arr.length < 2) {
-					return arr;
-				} else {
-			    		// Опорная точка для деления массива, выбирается случайно
-					const pivotPosition = Math.floor(Math.random() * arr.length);
-					const pivot = arr[pivotPosition];
-					// Значения меньшие, либо равные опорному 
-					// попадают в новый массив less
-					const less = arr.filter((value, index) => {
-						const isPivot = index === pivotPosition;
-						return !isPivot && (value <= pivot);
-					});
-					// Значения, которые больше опорного
-					// попадают в новый массив less
-					const greater = arr.filter(value => value > pivot);
-					
-					return [...qsort(less), pivot, ...qsort(greater)];
+				const qsort = (arr) => {
+					if (arr.length < 2) {
+						return arr;
+					} else {
+				    		// Опорная точка для деления массива, выбирается случайно
+						const pivotPosition = Math.floor(Math.random() * arr.length);
+						const pivot = arr[pivotPosition];
+						// Значения меньшие, либо равные опорному 
+						// попадают в новый массив less
+						const less = arr.filter((value, index) => {
+							const isPivot = index === pivotPosition;
+							return !isPivot && (value <= pivot);
+						});
+						// Значения, которые больше опорного
+						// попадают в новый массив less
+						const greater = arr.filter(value => value > pivot);
+						
+						return [...qsort(less), pivot, ...qsort(greater)];
+					}
+				};
+				var a = document.getElementById('a').value;
+				var mas =[];
+				for(i=0;i<30;i++){
+	        		mas[i]=arr[i].value; // Из инпутов в массив
+	    		}
+	    		for(j=0;j<30;j++){
+	    			if (mas[j] == arr[j]){
+					console.log('Правильно');
+					document.getElementById("result").innerHTML = ('Правильно');
 				}
-			};
-			var a = document.getElementById('a').value;
-			var mas =[];
-			for(i=0;i<30;i++){
-        		mas[i]=arr[i].value; // Из инпутов в массив
-    		}
-    		for(j=0;j<30;j++){
-    			if (mas[j] == arr[j]){
-				console.log('Правильно');
-				document.getElementById("result").innerHTML = ('Правильно');
-			}
-			else { 
-				console.log('Неправильно, попробуй снова');
-				document.getElementById("result").innerHTML = ('Неправильно, попробуй снова');
+				else { 
+					console.log('Неправильно, попробуй снова');
+					document.getElementById("result").innerHTML = ('Неправильно, попробуй снова');
+				}
 			}
 		}
 
@@ -56,7 +57,7 @@
 <body>
 	<div><h3>Составь последовательность чисел в порядке возрастания из данных чисел</h3></div>
 	<form>
-		<button onClick="rand()">вывести случайные числа</button>
+		<button onClick="rand()">вывести случайные числа</button><br><br>
 		запиши сюда, полученные числа по порядку<input id="a" type="number"><br><br>
 		<output id="result"></output>
 	</form >
