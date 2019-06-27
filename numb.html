@@ -5,13 +5,12 @@
 		
 		function rand(){
 			var i;
-			var max = 51;
-			var min = 0;
 			var arr = [];
 				for (i = 0; i < 30; i++) {
-	  				arr.push(Math.random() * (max - min) + min)
+	  				arr.push(Math.ceil(Math.random() * 50))
 				}
 				console.log(arr);
+				document.getElementById('str').innerHTML=(arr.join(','));
 		}
 		function compare(){
 				const qsort = (arr) => {
@@ -34,13 +33,13 @@
 						return [...qsort(less), pivot, ...qsort(greater)];
 					}
 				};
-				var a = document.getElementById('a').value;
-				var mas =[];
-				for(i=0;i<30;i++){
-	        		mas[i]=arr[i].value; // Из инпутов в массив
-	    		}
+				var a = document.getElementById(parseInt(a.split(' ')));
+				var arr = document.getElementById(parseInt(arr.split(',')));
+				/*for(i=0;i<30;i++){
+	        		a[i]=arr[i].value; // Из инпутов в массив
+	    		}*/
 	    		for(j=0;j<30;j++){
-	    			if (mas[j] == arr[j]){
+	    			if (a[j] == arr[j]){
 					console.log('Правильно');
 					document.getElementById("result").innerHTML = ('Правильно');
 				}
@@ -50,17 +49,18 @@
 				}
 			}
 		}
-
 </script>
 	<title>числа</title>
 </head>
 <body>
 	<div><h3>Составь последовательность чисел в порядке возрастания из данных чисел</h3></div>
 	<form>
-		<button onClick="rand()">вывести случайные числа</button><br><br>
-		запиши сюда, полученные числа по порядку<input id="a" type="number"><br><br>
+		<input type="button" onclick="rand();"value="вывести случайные числа"/><br><br>
+		<output id="str"></output><br><br>
+		запиши сюда, полученные числа по порядку<input id="a" type="text" value="нажми"><br><br>
+
 		<output id="result"></output>
 	</form >
-	<button onClick="compare()">проверка</button>
+	<input type="button" onclick="compare();"value="проверка"/>
 </body>
 </html>
