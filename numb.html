@@ -5,11 +5,11 @@
 		
 		function rand(){
 			var i;
-			var max = 50;
+			var max = 51;
 			var min = 0;
 			var arr = [];
 				for (i = 0; i < 30; i++) {
-	  				arr.push(Math.random() * (+max - +min) + +min)
+	  				arr.push(Math.random() * (max - min) + min)
 				}
 				console.log(arr);
 		}
